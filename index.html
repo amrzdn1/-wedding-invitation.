@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اولاد والي❤️</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -87,15 +87,39 @@ body{
 .hero:after{inset:28px;border-color:rgba(201,164,93,.18)}
 .card{max-width:760px;position:relative;z-index:2}
 .kicker{
-  letter-spacing:5px;color:#c9a45d;font-size:.78rem;margin-bottom:24px;
-  opacity:0;animation:fadeDown .9s ease forwards .1s;
+  font-family: 'Aref Ruqaa', serif;
+  letter-spacing: 2px;
+  color: #c9a45d;
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeDown .9s ease forwards .1s;
+}
+
+/* تنسيق النجوم الثلاثة */
+.ornaments-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeDown .9s ease forwards .2s;
 }
 .ornament{
-  font-size:38px;color:#c9a45d;margin-bottom:15px;
-  display:inline-block;
-  animation:spinGlow 7s linear infinite, fadeDown .9s ease forwards .2s;
-  opacity:0;
+  color: #c9a45d;
+  display: inline-block;
+  animation: spinGlow 7s linear infinite;
 }
+.ornament.side{
+  font-size: 22px;
+  opacity: 0.75;
+}
+.ornament.center{
+  font-size: 42px;
+}
+
 @keyframes spinGlow{
   0%{transform:rotate(0deg);text-shadow:0 0 8px rgba(201,164,93,.4)}
   50%{text-shadow:0 0 20px rgba(201,164,93,.9)}
@@ -108,10 +132,6 @@ body{
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(24px)}
   to{opacity:1;transform:translateY(0)}
-}
-h1{
-  font-family:"Amiri",serif;font-size:clamp(48px,10vw,92px);line-height:1.05;font-weight:700;
-  opacity:0;animation:fadeUp .9s ease forwards .3s;
 }
 .names{
   font-family:"Amiri",serif;color:#d8b56a;font-size:clamp(34px,7vw,65px);margin:15px 0;
@@ -231,11 +251,16 @@ footer{padding:35px 20px;text-align:center;color:#777;border-top:1px solid #222;
 <header class="hero">
   <div class="hero-glow"></div>
   <div class="card">
-    <div class="kicker">OUR WEDDING INVITATION</div>
-    <div class="ornament">✦</div>
+    <div class="kicker">دعوة فرح</div>
+    
+    <div class="ornaments-container">
+      <span class="ornament side">✦</span>
+      <span class="ornament center">✦</span>
+      <span class="ornament side">✦</span>
+    </div>
+
     <p class="subtitle">بسم الله الرحمن الرحيم</p>
     <p class="subtitle">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
-    <h1>دعوة فرح</h1>
     <div class="names">فرحة اولاد والي</div>
     <p class="subtitle">يسعدنا ويشرفنا حضوركم ومشاركتنا أجمل ليلة في حياتنا</p>
     <div class="date">22 · 08 · 2026</div>
