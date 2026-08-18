@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دعوة فرحنا ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Cairo",sans-serif;
+  background:#090909;
+  color:#f4ead2;
+  overflow-x:hidden;
+}
+
+/* ===== Animated particles background ===== */
+#particles{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.particle{
+  position:absolute;
+  bottom:-10px;
+  border-radius:50%;
+  background:radial-gradient(circle,#e8c983 0%,rgba(232,201,131,0) 70%);
+  opacity:0;
+  animation:rise linear infinite;
+}
+@keyframes rise{
+  0%{transform:translateY(0) translateX(0) scale(.4);opacity:0}
+  10%{opacity:.9}
+  50%{transform:translateY(-50vh) translateX(20px) scale(1)}
+  90%{opacity:.5}
+  100%{transform:translateY(-105vh) translateX(-15px) scale(.3);opacity:0}
+}
+
+/* ===== Japanese-style falling kanji ===== */
+.kanji{
+  position:absolute;
+  top:-60px;
+  font-family:"Amiri",serif;
+  color:rgba(201,164,93,.22);
+  font-weight:700;
+  user-select:none;
+  opacity:0;
+  animation:fallKanji linear infinite;
+}
+@keyframes fallKanji{
+  0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+  8%{opacity:.9}
+  50%{transform:translateY(55vh) translateX(30px) rotate(180deg)}
+  92%{opacity:.5}
+  100%{transform:translateY(110vh) translateX(-25px) rotate(360deg);opacity:0}
+}
+
+@keyframes glowShift{
+  0%,100%{opacity:.32;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:.5;transform:translate(-50%,-50%) scale(1.15)}
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:35px 20px;
+  position:relative;
+  background:linear-gradient(180deg,#050505,#120708 55%,#050505);
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;top:38%;left:50%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(150,20,25,.45),transparent 60%);
+  animation:glowShift 6s ease-in-out infinite;
+  z-index:0;
+}
+.hero:before,.hero:after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(201,164,93,.55);
+  pointer-events:none;
+  z-index:1;
+}
+.hero:after{inset:28px;border-color:rgba(201,164,93,.18)}
+.card{max-width:760px;position:relative;z-index:2}
+.kicker{
+  letter-spacing:5px;color:#c9a45d;font-size:.78rem;margin-bottom:24px;
+  opacity:0;animation:fadeDown .9s ease forwards .1s;
+}
+.ornament{
+  font-size:38px;color:#c9a45d;margin-bottom:15px;
+  display:inline-block;
+  animation:spinGlow 7s linear infinite, fadeDown .9s ease forwards .2s;
+  opacity:0;
+}
+@keyframes spinGlow{
+  0%{transform:rotate(0deg);text-shadow:0 0 8px rgba(201,164,93,.4)}
+  50%{text-shadow:0 0 20px rgba(201,164,93,.9)}
+  100%{transform:rotate(360deg);text-shadow:0 0 8px rgba(201,164,93,.4)}
+}
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+h1{
+  font-family:"Amiri",serif;font-size:clamp(48px,10vw,92px);line-height:1.05;font-weight:700;
+  opacity:0;animation:fadeUp .9s ease forwards .3s;
+}
+.names{
+  font-family:"Amiri",serif;color:#d8b56a;font-size:clamp(34px,7vw,65px);margin:15px 0;
+  opacity:0;animation:fadeUp .9s ease forwards .5s;
+}
+.amp{color:#9d2027}
+.subtitle{
+  font-size:17px;line-height:2;color:#d8d0bf;
+  opacity:0;animation:fadeUp .9s ease forwards .7s;
+}
+.date{
+  display:inline-block;margin:30px 0 10px;padding:12px 30px;
+  border-top:1px solid #9d2027;border-bottom:1px solid #9d2027;
+  font-size:22px;letter-spacing:3px;color:#fff;
+  opacity:0;animation:fadeUp .9s ease forwards .9s;
+}
+.location{
+  margin-top:12px;color:#c9a45d;
+  opacity:0;animation:fadeUp .9s ease forwards 1.05s;
+}
+.btn{
+  display:inline-block;margin-top:30px;padding:13px 30px;border-radius:30px;
+  background:#9d2027;color:white;text-decoration:none;font-weight:700;
+  transition:.25s;box-shadow:0 8px 25px rgba(157,32,39,.25);
+  position:relative;overflow:hidden;
+  opacity:0;animation:fadeUp .9s ease forwards 1.2s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(157,32,39,.45)}
+.btn:before{
+  content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-20deg);
+}
+.btn:hover:before{animation:shine .8s ease}
+@keyframes shine{
+  from{left:-60%}
+  to{left:130%}
+}
+
+section{padding:80px 20px;max-width:1000px;margin:auto;text-align:center;position:relative;z-index:2}
+.section-title{
+  font-family:"Amiri",serif;font-size:42px;color:#d8b56a;margin-bottom:35px;
+}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.details{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.box{
+  padding:28px 18px;border:1px solid rgba(201,164,93,.3);
+  background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
+  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.box:hover{
+  transform:translateY(-8px);
+  border-color:rgba(201,164,93,.7);
+  box-shadow:0 15px 30px rgba(0,0,0,.4);
+}
+.icon{font-size:30px;margin-bottom:12px;transition:transform .35s ease}
+.box:hover .icon{transform:scale(1.2) rotate(-6deg)}
+.box h3{margin-bottom:8px;color:#d8b56a}
+.box p{color:#ccc;line-height:1.8}
+
+.countdown{
+  display:flex;justify-content:center;gap:14px;flex-wrap:wrap
+}
+.time{
+  min-width:105px;padding:20px 10px;border:1px solid rgba(201,164,93,.3);
+  background:#101010;transition:border-color .3s ease,transform .3s ease;
+}
+.time:hover{border-color:rgba(201,164,93,.7);transform:translateY(-4px)}
+.time strong{
+  display:block;font-size:34px;color:#d8b56a;
+  animation:pulseNum 2s ease-in-out infinite;
+}
+@keyframes pulseNum{
+  0%,100%{opacity:1}
+  50%{opacity:.6}
+}
+.time span{font-size:13px;color:#aaa}
+
+.map{
+  width:100%;height:260px;border:1px solid rgba(201,164,93,.3);
+  display:flex;align-items:center;justify-content:center;background:#111;color:#aaa;
+  position:relative;overflow:hidden;
+}
+.map:before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%,rgba(201,164,93,.15),transparent 60%);
+  animation:pulseMap 3s ease-in-out infinite;
+}
+@keyframes pulseMap{
+  0%,100%{opacity:.4;transform:scale(1)}
+  50%{opacity:.9;transform:scale(1.15)}
+}
+
+.rsvp{max-width:600px}
+form{display:grid;gap:14px}
+input,select,textarea{
+  width:100%;padding:14px;border-radius:8px;border:1px solid #444;
+  background:#111;color:#eee;font-family:inherit;transition:border-color .3s ease,box-shadow .3s ease;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:#c9a45d;box-shadow:0 0 0 3px rgba(201,164,93,.15);
+}
+button{
+  border:0;cursor:pointer;padding:14px;border-radius:8px;
+  background:#9d2027;color:#fff;font-family:inherit;font-weight:700;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+button:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(157,32,39,.4)}
+
+footer{padding:35px 20px;text-align:center;color:#777;border-top:1px solid #222;position:relative;z-index:2}
+
+@media(max-width:700px){
+ .details{grid-template-columns:1fr}
+ .hero:before{inset:10px}.hero:after{inset:18px}
+ section{padding:60px 18px}
+}
+</style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="card">
+    <div class="kicker">OUR WEDDING INVITATION</div>
+    <div class="ornament">✦</div>
+    <p class="subtitle">بسم الله الرحمن الرحيم</p>
+    <h1>دعوة فرح</h1>
+    <div class="names">فرحة اولاد والي</div>
+    <p class="subtitle">يسعدنا ويشرفنا حضوركم ومشاركتنا أجمل ليلة في حياتنا</p>
+    <div class="date">22 · 08 · 2026</div>
+    <div class="location">كفر العسيلي, شارع ناهية, بولاق الدكرور</div>
+    <a class="btn" href="#details">تفاصيل الفرح ↓</a>
+  </div>
+</header>
+
+<section id="details" class="reveal">
+  <h2 class="section-title">تفاصيل الليلة</h2>
+  <div class="details">
+    <div class="box"><div class="icon">📅</div><h3>التاريخ</h3><p>السبت<br>22 أغسطس 2026</p></div>
+    <div class="box"><div class="icon">🕘</div><h3>الميعاد</h3><p>من الساعة 8:00 مساءً<br>حتى نهاية الاحتفال</p></div>
+    <div class="box"><div class="icon">📍</div><h3>المكان</h3><p>كفر العسيلي, شارع ناهية, بولاق الدكرور<br>الجيزة، مصر</p></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 class="section-title">العد التنازلي</h2>
+  <div class="countdown">
+    <div class="time"><strong id="days">00</strong><span>يوم</span></div>
+    <div class="time"><strong id="hours">00</strong><span>ساعة</span></div>
+    <div class="time"><strong id="minutes">00</strong><span>دقيقة</span></div>
+    <div class="time"><strong id="seconds">00</strong><span>ثانية</span></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 class="section-title">الموقع</h2>
+  <div class="map">ضع هنا خريطة Google Maps أو رابط القاعة</div>
+  <a class="btn" href="#" onclick="alert('أضف رابط Google Maps هنا');return false;">فتح الموقع على الخريطة</a>
+</section>
+
+<section class="rsvp reveal">
+  <h2 class="section-title">تأكيد الحضور</h2>
+  <form id="rsvpForm">
+    <input type="text" id="rsvpName" placeholder="الاسم" required>
+    <select id="rsvpAttend" required>
+      <option>اكيد يا اخويا هكون موجود❤️</option>
+      <option>اعذرني والله يا اخويا</option>
+    </select>
+    <textarea rows="4" id="rsvpMsg" placeholder="رسالة للعروسين (اختياري)"></textarea>
+    <button type="submit" id="rsvpBtn">تأكيد الحضور</button>
+  </form>
+</section>
+
+<footer>شماريخك وهداتك وعلي الفرح❤️</footer>
+
+<script>
+// countdown
+const weddingDate = new Date("2026-08-22T20:00:00+03:00").getTime();
+function updateCountdown(){
+  const now=Date.now(), diff=Math.max(0,weddingDate-now);
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+  document.getElementById("days").textContent=String(d).padStart(2,"0");
+  document.getElementById("hours").textContent=String(h).padStart(2,"0");
+  document.getElementById("minutes").textContent=String(m).padStart(2,"0");
+  document.getElementById("seconds").textContent=String(s).padStart(2,"0");
+}
+updateCountdown();setInterval(updateCountdown,1000);
+
+// floating particles
+const particlesContainer = document.getElementById("particles");
+const NUM_PARTICLES = 26;
+for(let i=0;i<NUM_PARTICLES;i++){
+  const p = document.createElement("div");
+  p.className = "particle";
+  const size = 3 + Math.random()*6;
+  p.style.width = size+"px";
+  p.style.height = size+"px";
+  p.style.left = Math.random()*100+"vw";
+  const duration = 8 + Math.random()*10;
+  p.style.animationDuration = duration+"s";
+  p.style.animationDelay = (Math.random()*duration)+"s";
+  particlesContainer.appendChild(p);
+}
+
+// falling kanji characters (decorative, generic words: love / celebration / eternity / happiness)
+const kanjiChars = ["愛","祝","縁","幸","絆","永","和","福","心","誠","結","喜"];
+const NUM_KANJI = 24;
+for(let i=0;i<NUM_KANJI;i++){
+  const k = document.createElement("div");
+  k.className = "kanji";
+  k.textContent = kanjiChars[i % kanjiChars.length];
+  k.style.left = Math.random()*95+"vw";
+  k.style.fontSize = (22 + Math.random()*30)+"px";
+  const duration = 10 + Math.random()*12;
+  k.style.animationDuration = duration+"s";
+  k.style.animationDelay = (Math.random()*duration)+"s";
+  particlesContainer.appendChild(k);
+}
+
+// scroll reveal
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.15});
+revealEls.forEach(el=>observer.observe(el));
+
+// ===== RSVP → Google Sheet =====
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmNxmuONdSl2vvnHTzUnbaCwUkWoFVh5qPlc0uy8TtbAHSx2FBwdUaMDDeYvAMTYK8QA/exec";
+
+const rsvpForm = document.getElementById("rsvpForm");
+rsvpForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  const btn = document.getElementById("rsvpBtn");
+  const originalText = btn.textContent;
+  btn.textContent = "جاري الإرسال...";
+  btn.disabled = true;
+
+  const data = {
+    name: document.getElementById("rsvpName").value,
+    attending: document.getElementById("rsvpAttend").value,
+    message: document.getElementById("rsvpMsg").value,
+    timestamp: new Date().toISOString()
+  };
+
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  })
+  .then(()=>{
+    alert("تنور يا قلب اخوك ❤️");
+    rsvpForm.reset();
+  })
+  .catch(()=>{
+    alert("حصل خطأ، حاول تاني أو كلمنا مباشرة");
+  })
+  .finally(()=>{
+    btn.textContent = originalText;
+    btn.disabled = false;
+  });
+});
+</script>
+</body>
+</html>
